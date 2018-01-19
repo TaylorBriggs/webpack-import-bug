@@ -15,10 +15,11 @@ describe('<App />', function() {
 
   it('loads the AsyncComponent', function() {
     let wrapper = mount(<App />);
-    wrapper.update();
 
-    expect(wrapper.find(AsyncComponent)).to.have.lengthOf(1);
+    return Promise.resolve(() => {
+      expect(wrapper.find(AsyncComponent)).to.have.lengthOf(1);
 
-    wrapper.unmount();
+      wrapper.unmount();
+    });
   });
 });
